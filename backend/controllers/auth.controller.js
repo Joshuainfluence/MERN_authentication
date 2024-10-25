@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 export const signup = async (req, res) => {
     const {email, password, name} = req.body;
     try {
-        if (!email || !passwsord || !name) {
+        if (!email || !password || !name) {
             throw new Error("All fields are required");
             
         } 
@@ -37,7 +37,7 @@ export const signup = async (req, res) => {
             }
         });
     } catch (error) {
-        
+        res.status(400).json({success:false, message: error.message});
     }
 }
 export const login = async (req, res) => {
